@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
@@ -504,7 +505,7 @@ export default function ProjectPage() {
 
   // Render image placeholder based on type
   const renderImagePlaceholder = () => {
-    const { type, colors, icon } = project.imagePlaceholder;
+    const { type, icon } = project.imagePlaceholder;
     
     const baseClasses = "w-full h-96 rounded-3xl overflow-hidden relative group";
     
@@ -725,9 +726,11 @@ export default function ProjectPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {project.images.map((image, idx) => (
                   <div key={idx} className="rounded-3xl overflow-hidden shadow-2xl">
-                    <img
+                    <Image
                       src={image}
                       alt={`${project.title} Screenshot ${idx + 1}`}
+                      width={800}
+                      height={600}
                       className="w-full h-auto object-cover"
                     />
                   </div>
@@ -824,7 +827,7 @@ export default function ProjectPage() {
         <div className="mt-20 bg-white/5 backdrop-blur-md border-t border-white/10">
           <div className="max-w-4xl mx-auto px-6 py-16 text-center">
             <blockquote className="text-2xl md:text-3xl font-light text-white/80 leading-relaxed mb-6">
-              "You always overestimate the change that will occur in the short term, but underestimate the change that will occur in the long term."
+              &ldquo;You always overestimate the change that will occur in the short term, but underestimate the change that will occur in the long term.&rdquo;
             </blockquote>
             <p className="text-white/60 text-lg">
               — Anonymous

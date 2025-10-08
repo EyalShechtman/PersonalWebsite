@@ -2,6 +2,17 @@
 
 import { useEffect, useRef } from 'react';
 
+// Extend Window interface to include Twitter widgets
+declare global {
+  interface Window {
+    twttr: {
+      widgets: {
+        load: (element?: HTMLElement | null) => void;
+      };
+    };
+  }
+}
+
 interface TwitterEmbedProps {
   html: string;
 }
