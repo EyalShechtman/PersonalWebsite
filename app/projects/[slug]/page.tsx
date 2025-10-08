@@ -289,7 +289,6 @@ const projectsData: Record<string, {
       { label: "View on GitHub", url: "https://github.com/EyalShechtman/Casca" },
       { label: "Watch Demo", url: "https://www.loom.com/share/cd53dfd522b74a2fb7ad888c1f5f5212" }
     ],
-    videoFile: "/assets/Casca.mp4",
     date: "February 2025",
     category: "Full-Stack",
     imagePlaceholder: {
