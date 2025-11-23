@@ -19,8 +19,12 @@
   }
 }
 
+html {
+  background-color: #1e3a8a; /* Dark blue background for the entire page */
+}
+
 body {
-  background: var(--background);
+  background-color: #1e3a8a; /* Dark blue background for the body */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
