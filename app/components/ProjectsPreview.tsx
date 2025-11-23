@@ -1,10 +1,9 @@
 'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
 const projects = [
+  { name: 'Soccer Career', color: 'from-blue-400 to-indigo-400', slug: 'soccer-career', date: 'Nov 2025' },
   { name: 'Open AI Stylist', color: 'from-blue-500 to-cyan-500', slug: 'open-ai-stylist', date: 'June 2025' },
   { name: 'Dress to Impress', color: 'from-purple-500 to-pink-500', slug: 'dress2impress', date: 'July 2025' },
   { name: 'ArtistOS', color: 'from-orange-500 to-red-500', slug: 'artistos', date: 'Sept 2025' },
@@ -18,7 +17,6 @@ const projects = [
   { name: 'PicturAI', color: 'from-pink-500 to-rose-500', slug: 'pictur-ai', date: 'Oct 2025', image: '/assets/picturAI.png' },
   { name: 'TAMID Mass Texter', color: 'from-teal-500 to-blue-500', slug: 'tamid-mass-texter', date: 'Apr 2025' },
 ];
-
 export function ProjectsPreview() {
   return (
     <div className="w-full h-full bg-black p-4 overflow-y-auto">
@@ -30,7 +28,6 @@ export function ProjectsPreview() {
             className="group relative aspect-square rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-300 bg-white/5 border border-white/10"
           >
             <div className="absolute inset-0 bg-white/5 opacity-90 group-hover:opacity-100 transition-opacity" />
-            
             {/* Grid pattern */}
             <div className="absolute inset-0 opacity-20">
               <div className="grid grid-cols-8 grid-rows-8 h-full w-full">
@@ -39,7 +36,6 @@ export function ProjectsPreview() {
                 ))}
               </div>
             </div>
-
             {/* Content */}
             <div className="relative h-full flex flex-col items-center justify-center p-4 text-center">
               {project.image ? (
@@ -69,7 +65,6 @@ export function ProjectsPreview() {
                   </div>
                 </>
               )}
-              
               {/* Hover indicator */}
               <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <svg className="w-6 h-6 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,13 +72,11 @@ export function ProjectsPreview() {
                 </svg>
               </div>
             </div>
-
             {/* Shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
+            <div className=\"absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent translate-x-full group-hover:translate-x-0 transition-transform duration-700\" />
           </Link>
         ))}
       </div>
     </div>
   );
 }
-
