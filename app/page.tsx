@@ -1,5 +1,4 @@
 'use client';
-
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Home as HomeIcon, User, Briefcase, FileText, Music } from 'lucide-react';
@@ -8,9 +7,7 @@ import { ContainerScroll } from './components/ui/container-scroll-animation';
 import GlassMusicPlaylist from './components/GlassMusicPlaylist';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, memo, useState, useEffect } from 'react';
-
 const PrismaticBurst = dynamic(() => import('./components/PrismaticBurst'), { ssr: false });
-
 // Featured projects for the tablet (top 3)
 const featuredProjects = [
   {
@@ -42,9 +39,16 @@ const featuredProjects = [
     highlights: ["Auto-Style Mode", "Multi-Modal Chat", "Virtual Try-Ons", "Real-time Products"]
   }
 ];
-
 // All projects for the full section
 const allProjects = [
+  {
+    title: "My Soccer Career",
+    description: "A detailed overview of my competitive soccer journey, including ECNL, European experience, and U10 coaching.",
+    tech: ["Blog", "Sports", "Coaching"],
+    link: "/projects/soccer-career",
+    slug: "soccer-career",
+    highlights: ["ECNL Level", "European Experience", "U10 Coach"]
+  },
   {
     title: "Dress to Impress: AI Fashion Showdown",
     description: "24-hour hackathon project from SF OpenAI × Cerebral Valley GPT-5 - AI fashion game with avatar generation, AI opponent, multimodal judging, and runway videos.",
@@ -156,7 +160,6 @@ const allProjects = [
     highlights: ["Live Deployment", "Bulk Messaging", "Event Notifications"]
   }
 ];
-
 const skills = {
   "Languages": ["TypeScript", "Python", "JavaScript", "Swift", "R", "Jupyter"],
   "Frontend": ["Next.js 15", "React 19", "Tailwind CSS", "Zustand", "IndexedDB"],
@@ -164,7 +167,6 @@ const skills = {
   "Backend": ["Node.js", "FastAPI", "uvicorn", "Docker", "Nginx"],
   "APIs & Integrations": ["Amazon API", "Finnhub", "Alpaca", "YouTube API", "RapidAPI"]
 };
-
 // Memoized project card component for better performance
 const ProjectCard = memo(({ project, idx }: { project: typeof allProjects[0], idx: number }) => (
   <Link
@@ -182,18 +184,15 @@ const ProjectCard = memo(({ project, idx }: { project: typeof allProjects[0], id
         </svg>
       </div>
     </div>
-
     {(project.stars || project.forks) && (
       <div className="flex gap-4 mb-3 text-sm text-white/60">
         {project.stars && <span>⭐ {project.stars} stars</span>}
         {project.forks && <span>🍴 {project.forks} forks</span>}
       </div>
     )}
-
     <p className="text-white/70 mb-4 leading-relaxed line-clamp-3">
       {project.description}
     </p>
-
     <div className="flex flex-wrap gap-2 mb-4">
       {project.tech.slice(0, 3).map((tech, i) => (
         <span
@@ -209,7 +208,6 @@ const ProjectCard = memo(({ project, idx }: { project: typeof allProjects[0], id
         </span>
       )}
     </div>
-
     <div className="border-t border-white/10 pt-4">
       <div className="flex items-center gap-2 text-sm text-white/60 group-hover:text-white/80 transition-colors">
         <span>View Details</span>
@@ -220,26 +218,20 @@ const ProjectCard = memo(({ project, idx }: { project: typeof allProjects[0], id
     </div>
   </Link>
 ));
-
 ProjectCard.displayName = 'ProjectCard';
-
 // Performance monitoring hook
 function usePerformanceMonitor() {
   const [isLowEndDevice, setIsLowEndDevice] = useState(false);
-
   useEffect(() => {
     // Simple performance detection
     const connection = (navigator as { connection?: { effectiveType?: string } }).connection;
     const isSlowConnection = connection?.effectiveType && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
     const isLowMemory = (navigator as { deviceMemory?: number }).deviceMemory && (navigator as { deviceMemory?: number }).deviceMemory! < 4;
     const isOldHardware = !window.requestAnimationFrame || !window.IntersectionObserver;
-
     setIsLowEndDevice(Boolean(isSlowConnection || isLowMemory || isOldHardware));
   }, []);
-
   return { isLowEndDevice };
 }
-
 export default function Home() {
   const { isLowEndDevice } = usePerformanceMonitor();
   const projectsSectionRef = useRef<HTMLElement>(null);
@@ -247,9 +239,7 @@ export default function Home() {
     target: projectsSectionRef,
     offset: ["start end", "start start"]
   });
-  
   const projectsOpacity = useTransform(projectsScrollProgress, [0.7, 0.95], [0, 1]);
-
   const navItems = [
     { name: 'Home', url: '#home', icon: HomeIcon },
     { name: 'About', url: '#about', icon: User },
@@ -257,7 +247,6 @@ export default function Home() {
     { name: 'Music', url: '#music', icon: Music },
     { name: 'Resume', url: '#resume', icon: FileText }
   ];
-
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
       {/* Animated WebGL Background - Disabled on low-end devices for performance */}
@@ -275,13 +264,10 @@ export default function Home() {
           />
         </div>
       )}
-
       {/* Tubelight Navigation */}
       <NavBar items={navItems} />
-      
       {/* Content Overlay */}
       <div className="relative z-10 pb-24 md:pb-0">
-
         {/* Hero Section with Scroll Animation */}
         <section id="home" className="pt-20 md:pt-8">
           <ContainerScroll
@@ -297,12 +283,11 @@ export default function Home() {
                   <div className="flex items-center gap-2 text-white/80">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <span>Seattle, WA • UW</span>
                   </div>
                 </div>
-                
                 <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-white leading-tight tracking-tight font-[family-name:var(--font-orbitron)]">
                   <span className="block text-white">
                     BUILDING
@@ -314,7 +299,6 @@ export default function Home() {
                     Web Experiences
                   </span>
                 </h1>
-                
                 <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-[family-name:var(--font-space-grotesk)] mb-8 md:mb-12">
                   Specializing in full-stack development with cutting-edge AI integration
                 </p>
@@ -334,7 +318,6 @@ export default function Home() {
             </div>
           </ContainerScroll>
         </section>
-
         {/* All Projects - Full Page View (after scroll) */}
         <motion.section 
           ref={projectsSectionRef}
@@ -351,7 +334,6 @@ export default function Home() {
             ))}
           </div>
         </motion.section>
-
         {/* Skills Section */}
         <section className="max-w-6xl mx-auto px-6 py-20">
           <h3 className="text-4xl font-bold mb-12 text-white">
@@ -380,12 +362,10 @@ export default function Home() {
             ))}
           </div>
         </section>
-
         {/* Music Section */}
         <section id="music" className="max-w-6xl mx-auto px-6 py-20">
           <GlassMusicPlaylist />
         </section>
-
         {/* Resume/Contact Section */}
         <section id="resume" className="max-w-6xl mx-auto px-6 py-20">
           <h3 className="text-4xl font-bold mb-8 text-white text-center">
@@ -419,7 +399,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         {/* Footer */}
         <footer className="border-t border-white/10 mt-20 bg-black/40">
           <div className="max-w-6xl mx-auto px-6 py-8">
