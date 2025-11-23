@@ -255,7 +255,7 @@ export default function Home() {
     { name: 'About', url: '#about', icon: User },
     { name: 'Projects', url: '#projects', icon: Briefcase },
     { name: 'Music', url: '#music', icon: Music },
-    { name: 'Resume', url: '#resume', icon: FileText }
+    { name: 'Resume', url: '/resume', icon: FileText }
   ];
 
   return (

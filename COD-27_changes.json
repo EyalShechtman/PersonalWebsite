@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "path": "app/page.tsx",
+      "changes": [
+        {
+          "search": "  const navItems = [\n    { name: 'Home', url: '#home', icon: HomeIcon },\n    { name: 'About', url: '#about', icon: User },\n    { name: 'Projects', url: '#projects', icon: Briefcase },\n    { name: 'Music', url: '#music', icon: Music },\n    { name: 'Resume', url: '#resume', icon: FileText }\n  ];",
+          "replace": "  const navItems = [\n    { name: 'Home', url: '#home', icon: HomeIcon },\n    { name: 'About', url: '#about', icon: User },\n    { name: 'Projects', url: '#projects', icon: Briefcase },\n    { name: 'Music', url: '#music', icon: Music },\n    { name: 'Resume', url: '/resume', icon: FileText }\n  ];"
+        }
+      ]
+    },
+    {
+      "path": "app/resume/page.tsx",
+      "changes": [
+        {
+          "search": "",
+          "replace": "import React from 'react';\nimport Link from 'next/link';\nimport { Download } from 'lucide-react';\n\nconst ResumePage = () => {\n  return (\n    <div className=\"min-h-screen bg-blue-50 text-gray-800\">\n      <nav className=\"p-4 bg-white shadow-md\">\n        <div className=\"container mx-auto\">\n            <Link href=\"/\" className=\"text-xl font-bold text-blue-800 hover:text-blue-600\">\n                Eyal Shechtman\n            </Link>\n        </div>\n      </nav>\n      <main className=\"flex flex-col items-center justify-center text-center p-8 pt-20\">\n        <h1 className=\"text-5xl font-extrabold text-blue-800 mb-4\">My Resume</h1>\n        <p className=\"text-lg text-blue-700 max-w-lg mx-auto mb-8\">\n          Here you can find the most up-to-date version of my professional resume. Feel free to download it and get in touch if you think we'd be a good fit.\n        </p>\n        <a\n          href=\"/resume.pdf\"\n          download\n          className=\"inline-flex items-center gap-3 px-8 py-4 bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-800 transition-transform transform hover:scale-105\"\n        >\n          <Download className=\"w-6 h-6\" />\n          <span>Download PDF</span>\n        </a>\n      </main>\n      <footer className=\"text-center p-4 mt-16 text-blue-600\">\n        <p>&copy; {new Date().getFullYear()} Eyal Shechtman. All rights reserved.</p>\n      </footer>\n    </div>\n  );\n};\n\nexport default ResumePage;\n"
+        }
+      ]
+    }
+  ]
+}
